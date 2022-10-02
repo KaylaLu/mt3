@@ -1,3 +1,11 @@
+# Warning:
+It's not original!!
+It's not original!!
+It's not original!!
+This is only for me to finish my recurrent paper homework and try to do something little  new.
+
+If you want to use the original code,please turn to  https://github.com/magenta/mt3
+
 # MT3: Multi-Task Multitrack Music Transcription
 
 MT3 is a multi-instrument automatic music transcription model that uses the [T5X framework](https://github.com/google-research/t5x).
