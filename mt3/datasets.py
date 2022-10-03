@@ -116,51 +116,51 @@ class DatasetConfig:
 #     ])
 
 
-GUITARSET_CONFIG = DatasetConfig(
-    name='guitarset',
-    paths={
-        'train':
-            'gs://mt3/data/datasets/guitarset/train.tfrecord-?????-of-00019',
-        'validation':
-            'gs://mt3/data/datasets/guitarset/validation.tfrecord-?????-of-00006',
-    },
-    features={
-        'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
-        'audio': tf.io.FixedLenFeature([], dtype=tf.string),
-        'velocity_range': tf.io.FixedLenFeature([], dtype=tf.string),
-        'id': tf.io.FixedLenFeature([], dtype=tf.string),
-    },
-    train_split='train',
-    train_eval_split='validation',
-    infer_eval_splits=[
-        InferEvalSplit(name='train', suffix='eval_train'),
-        InferEvalSplit(name='validation', suffix='validation'),
-    ])
-
-
-# URMP_CONFIG = DatasetConfig(
-#     name='urmp',
+# GUITARSET_CONFIG = DatasetConfig(
+#     name='guitarset',
 #     paths={
-#         'train': 'gs://mt3/data/datasets/urmp/train.tfrecord',
-#         'validation': 'gs://mt3/data/datasets/urmp/validation.tfrecord',
+#         'train':
+#             'gs://mt3/data/datasets/guitarset/train.tfrecord-?????-of-00019',
+#         'validation':
+#             'gs://mt3/data/datasets/guitarset/validation.tfrecord-?????-of-00006',
 #     },
 #     features={
-#         'id': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'tracks': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.int64, allow_missing=True),
-#         'inst_names': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.string, allow_missing=True),
-#         'audio': tf.io.FixedLenFeature([], dtype=tf.string),
 #         'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'instrument_sequences': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.string, allow_missing=True),
+#         'audio': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'velocity_range': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'id': tf.io.FixedLenFeature([], dtype=tf.string),
 #     },
 #     train_split='train',
 #     train_eval_split='validation',
 #     infer_eval_splits=[
 #         InferEvalSplit(name='train', suffix='eval_train'),
-#         InferEvalSplit(name='validation', suffix='validation')
+#         InferEvalSplit(name='validation', suffix='validation'),
 #     ])
+
+
+URMP_CONFIG = DatasetConfig(
+    name='urmp',
+    paths={
+        'train': 'gs://mt3/data/datasets/urmp/train.tfrecord',
+        'validation': 'gs://mt3/data/datasets/urmp/validation.tfrecord',
+    },
+    features={
+        'id': tf.io.FixedLenFeature([], dtype=tf.string),
+        'tracks': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.int64, allow_missing=True),
+        'inst_names': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.string, allow_missing=True),
+        'audio': tf.io.FixedLenFeature([], dtype=tf.string),
+        'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
+        'instrument_sequences': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.string, allow_missing=True),
+    },
+    train_split='train',
+    train_eval_split='validation',
+    infer_eval_splits=[
+        InferEvalSplit(name='train', suffix='eval_train'),
+        InferEvalSplit(name='validation', suffix='validation')
+    ])
 
 
 # MUSICNET_CONFIG = DatasetConfig(
