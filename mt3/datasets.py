@@ -163,41 +163,15 @@ class DatasetConfig:
 #     ])
 
 
-MUSICNET_CONFIG = DatasetConfig(
-    name='musicnet',
-    paths={
-        'train':
-            'gs://mt3/data/datasets/musicnet/musicnet-train.tfrecord-?????-of-00036',
-        'validation':
-            'gs://mt3/data/datasets/musicnet/musicnet-validation.tfrecord-?????-of-00005',
-        'test':
-            'gs://mt3/data/datasets/musicnet/musicnet-test.tfrecord-?????-of-00003'
-    },
-    features={
-        'id': tf.io.FixedLenFeature([], dtype=tf.string),
-        'sample_rate': tf.io.FixedLenFeature([], dtype=tf.float32),
-        'audio': tf.io.FixedLenSequenceFeature(
-            [], dtype=tf.float32, allow_missing=True),
-        'sequence': tf.io.FixedLenFeature([], dtype=tf.string)
-    },
-    train_split='train',
-    train_eval_split='validation',
-    infer_eval_splits=[
-        InferEvalSplit(name='train', suffix='eval_train'),
-        InferEvalSplit(name='validation', suffix='validation'),
-        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-    ])
-
-
-# MUSICNET_EM_CONFIG = DatasetConfig(
-#     name='musicnet_em',
+# MUSICNET_CONFIG = DatasetConfig(
+#     name='musicnet',
 #     paths={
 #         'train':
-#             'gs://mt3/data/datasets/musicnet_em/train.tfrecord-?????-of-00103',
+#             'gs://mt3/data/datasets/musicnet/musicnet-train.tfrecord-?????-of-00036',
 #         'validation':
-#             'gs://mt3/data/datasets/musicnet_em/validation.tfrecord-?????-of-00005',
+#             'gs://mt3/data/datasets/musicnet/musicnet-validation.tfrecord-?????-of-00005',
 #         'test':
-#             'gs://mt3/data/datasets/musicnet_em/test.tfrecord-?????-of-00006'
+#             'gs://mt3/data/datasets/musicnet/musicnet-test.tfrecord-?????-of-00003'
 #     },
 #     features={
 #         'id': tf.io.FixedLenFeature([], dtype=tf.string),
@@ -213,6 +187,32 @@ MUSICNET_CONFIG = DatasetConfig(
 #         InferEvalSplit(name='validation', suffix='validation'),
 #         InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
 #     ])
+
+
+MUSICNET_EM_CONFIG = DatasetConfig(
+    name='musicnet_em',
+    paths={
+        'train':
+            'gs://mt3/data/datasets/musicnet_em/train.tfrecord-?????-of-00103',
+        'validation':
+            'gs://mt3/data/datasets/musicnet_em/validation.tfrecord-?????-of-00005',
+        'test':
+            'gs://mt3/data/datasets/musicnet_em/test.tfrecord-?????-of-00006'
+    },
+    features={
+        'id': tf.io.FixedLenFeature([], dtype=tf.string),
+        'sample_rate': tf.io.FixedLenFeature([], dtype=tf.float32),
+        'audio': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.float32, allow_missing=True),
+        'sequence': tf.io.FixedLenFeature([], dtype=tf.string)
+    },
+    train_split='train',
+    train_eval_split='validation',
+    infer_eval_splits=[
+        InferEvalSplit(name='train', suffix='eval_train'),
+        InferEvalSplit(name='validation', suffix='validation'),
+        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
+    ])
 
 
 # CERBERUS4_CONFIG = DatasetConfig(
