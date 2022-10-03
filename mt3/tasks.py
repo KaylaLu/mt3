@@ -253,17 +253,17 @@ SPECTROGRAM_CONFIG = spectrograms.SpectrogramConfig()
 VOCAB_CONFIG_FULL = vocabularies.VocabularyConfig()
 VOCAB_CONFIG_NOVELOCITY = vocabularies.VocabularyConfig(num_velocity_bins=1)
 
-# Transcribe MAESTRO v1.
-add_transcription_task_to_registry(
-    dataset_config=datasets.MAESTROV1_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_FULL,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_transcription_example,
-        audio_is_samples=False,
-        id_feature_key='id'),
-    onsets_only=False,
-    include_ties=False)
+# # Transcribe MAESTRO v1.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.MAESTROV1_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_FULL,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_transcription_example,
+#         audio_is_samples=False,
+#         id_feature_key='id'),
+#     onsets_only=False,
+#     include_ties=False)
 
 # Transcribe MAESTRO v3.
 add_transcription_task_to_registry(
@@ -277,126 +277,126 @@ add_transcription_task_to_registry(
     onsets_only=False,
     include_ties=False)
 
-# Transcribe MAESTRO v3 without velocities, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.MAESTROV3_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_transcription_example,
-        audio_is_samples=False,
-        id_feature_key='id'),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe MAESTRO v3 without velocities, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.MAESTROV3_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_transcription_example,
+#         audio_is_samples=False,
+#         id_feature_key='id'),
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe GuitarSet, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.GUITARSET_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=preprocessors.tokenize_guitarset_example,
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe GuitarSet, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.GUITARSET_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=preprocessors.tokenize_guitarset_example,
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe URMP mixes, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.URMP_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_example_with_program_lookup,
-        inst_name_to_program_fn=preprocessors.urmp_instrument_to_program,
-        id_feature_key='id'),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe URMP mixes, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.URMP_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_example_with_program_lookup,
+#         inst_name_to_program_fn=preprocessors.urmp_instrument_to_program,
+#         id_feature_key='id'),
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe MusicNet, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.MUSICNET_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_transcription_example,
-        audio_is_samples=True,
-        id_feature_key='id'),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe MusicNet, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.MUSICNET_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_transcription_example,
+#         audio_is_samples=True,
+#         id_feature_key='id'),
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe MusicNetEM, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.MUSICNET_EM_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_transcription_example,
-        audio_is_samples=True,
-        id_feature_key='id'),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe MusicNetEM, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.MUSICNET_EM_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_transcription_example,
+#         audio_is_samples=True,
+#         id_feature_key='id'),
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe Cerberus4 (piano-guitar-bass-drums quartets), with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.CERBERUS4_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_slakh_example,
-        track_specs=datasets.CERBERUS4_CONFIG.track_specs,
-        ignore_pitch_bends=True),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe Cerberus4 (piano-guitar-bass-drums quartets), with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.CERBERUS4_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_slakh_example,
+#         track_specs=datasets.CERBERUS4_CONFIG.track_specs,
+#         ignore_pitch_bends=True),
+#     onsets_only=False,
+#     include_ties=True)
 
-# Transcribe 10 random sub-mixes of each song from Slakh, with ties.
-add_transcription_task_to_registry(
-    dataset_config=datasets.SLAKH_CONFIG,
-    spectrogram_config=SPECTROGRAM_CONFIG,
-    vocab_config=VOCAB_CONFIG_NOVELOCITY,
-    tokenize_fn=functools.partial(
-        preprocessors.tokenize_slakh_example,
-        track_specs=None,
-        ignore_pitch_bends=True),
-    onsets_only=False,
-    include_ties=True)
+# # Transcribe 10 random sub-mixes of each song from Slakh, with ties.
+# add_transcription_task_to_registry(
+#     dataset_config=datasets.SLAKH_CONFIG,
+#     spectrogram_config=SPECTROGRAM_CONFIG,
+#     vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#     tokenize_fn=functools.partial(
+#         preprocessors.tokenize_slakh_example,
+#         track_specs=None,
+#         ignore_pitch_bends=True),
+#     onsets_only=False,
+#     include_ties=True)
 
 
-# Construct task names to include in transcription mixture.
-MIXTURE_DATASET_NAMES = [
-    'maestrov3', 'guitarset', 'urmp', 'musicnet_em', 'cerberus4', 'slakh'
-]
-MIXTURE_TRAIN_TASK_NAMES = []
-MIXTURE_EVAL_TASK_NAMES = []
-MIXTURE_TEST_TASK_NAMES = []
-for dataset_name in MIXTURE_DATASET_NAMES:
-  MIXTURE_TRAIN_TASK_NAMES.append(
-      construct_task_name(task_prefix=f'{dataset_name}_notes_ties',
-                          spectrogram_config=SPECTROGRAM_CONFIG,
-                          vocab_config=VOCAB_CONFIG_NOVELOCITY,
-                          task_suffix='train'))
-  MIXTURE_EVAL_TASK_NAMES.append(
-      construct_task_name(task_prefix=f'{dataset_name}_notes_ties',
-                          spectrogram_config=SPECTROGRAM_CONFIG,
-                          vocab_config=VOCAB_CONFIG_NOVELOCITY,
-                          task_suffix='validation'))
-MIXING_TEMPERATURE = 10 / 3
+# # Construct task names to include in transcription mixture.
+# MIXTURE_DATASET_NAMES = [
+#     'maestrov3', 'guitarset', 'urmp', 'musicnet_em', 'cerberus4', 'slakh'
+# ]
+# MIXTURE_TRAIN_TASK_NAMES = []
+# MIXTURE_EVAL_TASK_NAMES = []
+# MIXTURE_TEST_TASK_NAMES = []
+# for dataset_name in MIXTURE_DATASET_NAMES:
+#   MIXTURE_TRAIN_TASK_NAMES.append(
+#       construct_task_name(task_prefix=f'{dataset_name}_notes_ties',
+#                           spectrogram_config=SPECTROGRAM_CONFIG,
+#                           vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#                           task_suffix='train'))
+#   MIXTURE_EVAL_TASK_NAMES.append(
+#       construct_task_name(task_prefix=f'{dataset_name}_notes_ties',
+#                           spectrogram_config=SPECTROGRAM_CONFIG,
+#                           vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#                           task_suffix='validation'))
+# MIXING_TEMPERATURE = 10 / 3
 
-# Add the mixture of all transcription tasks, with ties.
-seqio.MixtureRegistry.add(
-    construct_task_name(
-        task_prefix='mega_notes_ties',
-        spectrogram_config=SPECTROGRAM_CONFIG,
-        vocab_config=VOCAB_CONFIG_NOVELOCITY,
-        task_suffix='train'),
-    MIXTURE_TRAIN_TASK_NAMES,
-    default_rate=functools.partial(
-        seqio.mixing_rate_num_examples,
-        temperature=MIXING_TEMPERATURE))
-seqio.MixtureRegistry.add(
-    construct_task_name(
-        task_prefix='mega_notes_ties',
-        spectrogram_config=SPECTROGRAM_CONFIG,
-        vocab_config=VOCAB_CONFIG_NOVELOCITY,
-        task_suffix='eval'),
-    MIXTURE_EVAL_TASK_NAMES,
-    default_rate=functools.partial(
-        seqio.mixing_rate_num_examples,
-        temperature=MIXING_TEMPERATURE))
+# # Add the mixture of all transcription tasks, with ties.
+# seqio.MixtureRegistry.add(
+#     construct_task_name(
+#         task_prefix='mega_notes_ties',
+#         spectrogram_config=SPECTROGRAM_CONFIG,
+#         vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#         task_suffix='train'),
+#     MIXTURE_TRAIN_TASK_NAMES,
+#     default_rate=functools.partial(
+#         seqio.mixing_rate_num_examples,
+#         temperature=MIXING_TEMPERATURE))
+# seqio.MixtureRegistry.add(
+#     construct_task_name(
+#         task_prefix='mega_notes_ties',
+#         spectrogram_config=SPECTROGRAM_CONFIG,
+#         vocab_config=VOCAB_CONFIG_NOVELOCITY,
+#         task_suffix='eval'),
+#     MIXTURE_EVAL_TASK_NAMES,
+#     default_rate=functools.partial(
+#         seqio.mixing_rate_num_examples,
+#         temperature=MIXING_TEMPERATURE))
