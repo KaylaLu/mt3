@@ -189,87 +189,87 @@ class DatasetConfig:
 #     ])
 
 
-MUSICNET_EM_CONFIG = DatasetConfig(
-    name='musicnet_em',
-    paths={
-        'train':
-            'gs://mt3/data/datasets/musicnet_em/train.tfrecord-?????-of-00103',
-        'validation':
-            'gs://mt3/data/datasets/musicnet_em/validation.tfrecord-?????-of-00005',
-        'test':
-            'gs://mt3/data/datasets/musicnet_em/test.tfrecord-?????-of-00006'
-    },
-    features={
-        'id': tf.io.FixedLenFeature([], dtype=tf.string),
-        'sample_rate': tf.io.FixedLenFeature([], dtype=tf.float32),
-        'audio': tf.io.FixedLenSequenceFeature(
-            [], dtype=tf.float32, allow_missing=True),
-        'sequence': tf.io.FixedLenFeature([], dtype=tf.string)
-    },
-    train_split='train',
-    train_eval_split='validation',
-    infer_eval_splits=[
-        InferEvalSplit(name='train', suffix='eval_train'),
-        InferEvalSplit(name='validation', suffix='validation'),
-        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-    ])
-
-
-# CERBERUS4_CONFIG = DatasetConfig(
-#     name='cerberus4',
+# MUSICNET_EM_CONFIG = DatasetConfig(
+#     name='musicnet_em',
 #     paths={
 #         'train':
-#             'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_train_bass:drums:guitar:piano.tfrecord-?????-of-00286',
-#         'train_subset':
-#             'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_train_bass:drums:guitar:piano.tfrecord-00000-of-00286',
+#             'gs://mt3/data/datasets/musicnet_em/train.tfrecord-?????-of-00103',
 #         'validation':
-#             'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_validation_bass:drums:guitar:piano.tfrecord-?????-of-00212',
-#         'validation_subset':
-#             'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_validation_bass:drums:guitar:piano.tfrecord-0000?-of-00212',
+#             'gs://mt3/data/datasets/musicnet_em/validation.tfrecord-?????-of-00005',
 #         'test':
-#             'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_test_bass:drums:guitar:piano.tfrecord-?????-of-00106'
+#             'gs://mt3/data/datasets/musicnet_em/test.tfrecord-?????-of-00006'
 #     },
 #     features={
-#         'audio_sample_rate': tf.io.FixedLenFeature([], dtype=tf.int64),
-#         'inst_names': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.string, allow_missing=True),
-#         'midi_class': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.int64, allow_missing=True),
-#         'mix': tf.io.FixedLenSequenceFeature(
+#         'id': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'sample_rate': tf.io.FixedLenFeature([], dtype=tf.float32),
+#         'audio': tf.io.FixedLenSequenceFeature(
 #             [], dtype=tf.float32, allow_missing=True),
-#         'note_sequences': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.string, allow_missing=True),
-#         'plugin_name': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.int64, allow_missing=True),
-#         'program_num': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.int64, allow_missing=True),
-#         'slakh_class': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.int64, allow_missing=True),
-#         'src_ids': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.string, allow_missing=True),
-#         'stems': tf.io.FixedLenSequenceFeature(
-#             [], dtype=tf.float32, allow_missing=True),
-#         'stems_shape': tf.io.FixedLenFeature([2], dtype=tf.int64),
-#         'target_type': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'track_id': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'sequence': tf.io.FixedLenFeature([], dtype=tf.string)
 #     },
 #     train_split='train',
-#     train_eval_split='validation_subset',
+#     train_eval_split='validation',
 #     infer_eval_splits=[
-#         InferEvalSplit(name='train', suffix='eval_train_full',
-#                        include_in_mixture=False),
-#         InferEvalSplit(name='train_subset', suffix='eval_train'),
-#         InferEvalSplit(name='validation', suffix='validation_full',
-#                        include_in_mixture=False),
-#         InferEvalSplit(name='validation_subset', suffix='validation'),
+#         InferEvalSplit(name='train', suffix='eval_train'),
+#         InferEvalSplit(name='validation', suffix='validation'),
 #         InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-#     ],
-#     track_specs=[
-#         note_sequences.TrackSpec('bass', program=32),
-#         note_sequences.TrackSpec('drums', is_drum=True),
-#         note_sequences.TrackSpec('guitar', program=24),
-#         note_sequences.TrackSpec('piano', program=0)
 #     ])
+
+
+CERBERUS4_CONFIG = DatasetConfig(
+    name='cerberus4',
+    paths={
+        'train':
+            'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_train_bass:drums:guitar:piano.tfrecord-?????-of-00286',
+        'train_subset':
+            'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_train_bass:drums:guitar:piano.tfrecord-00000-of-00286',
+        'validation':
+            'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_validation_bass:drums:guitar:piano.tfrecord-?????-of-00212',
+        'validation_subset':
+            'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_validation_bass:drums:guitar:piano.tfrecord-0000?-of-00212',
+        'test':
+            'gs://mt3/data/datasets/cerberus4/slakh_multi_cerberus_test_bass:drums:guitar:piano.tfrecord-?????-of-00106'
+    },
+    features={
+        'audio_sample_rate': tf.io.FixedLenFeature([], dtype=tf.int64),
+        'inst_names': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.string, allow_missing=True),
+        'midi_class': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.int64, allow_missing=True),
+        'mix': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.float32, allow_missing=True),
+        'note_sequences': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.string, allow_missing=True),
+        'plugin_name': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.int64, allow_missing=True),
+        'program_num': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.int64, allow_missing=True),
+        'slakh_class': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.int64, allow_missing=True),
+        'src_ids': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.string, allow_missing=True),
+        'stems': tf.io.FixedLenSequenceFeature(
+            [], dtype=tf.float32, allow_missing=True),
+        'stems_shape': tf.io.FixedLenFeature([2], dtype=tf.int64),
+        'target_type': tf.io.FixedLenFeature([], dtype=tf.string),
+        'track_id': tf.io.FixedLenFeature([], dtype=tf.string),
+    },
+    train_split='train',
+    train_eval_split='validation_subset',
+    infer_eval_splits=[
+        InferEvalSplit(name='train', suffix='eval_train_full',
+                       include_in_mixture=False),
+        InferEvalSplit(name='train_subset', suffix='eval_train'),
+        InferEvalSplit(name='validation', suffix='validation_full',
+                       include_in_mixture=False),
+        InferEvalSplit(name='validation_subset', suffix='validation'),
+        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
+    ],
+    track_specs=[
+        note_sequences.TrackSpec('bass', program=32),
+        note_sequences.TrackSpec('drums', is_drum=True),
+        note_sequences.TrackSpec('guitar', program=24),
+        note_sequences.TrackSpec('piano', program=0)
+    ])
 
 
 # SLAKH_CONFIG = DatasetConfig(
