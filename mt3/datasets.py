@@ -84,36 +84,36 @@ class DatasetConfig:
 #     ])
 
 
-# MAESTROV3_CONFIG = DatasetConfig(
-#     name='maestrov3',
-#     paths={
-#         'train':
-#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-?????-of-00025',
-#         'train_subset':
-#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-00004-of-00025',
-#         'validation':
-#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-?????-of-00025',
-#         'validation_subset':
-#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-0002?-of-00025',
-#         'test':
-#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_test.tfrecord-?????-of-00025'
-#     },
-#     features={
-#         'audio': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'id': tf.io.FixedLenFeature([], dtype=tf.string)
-#     },
-#     train_split='train',
-#     train_eval_split='validation_subset',
-#     infer_eval_splits=[
-#         InferEvalSplit(name='train', suffix='eval_train_full',
-#                        include_in_mixture=False),
-#         InferEvalSplit(name='train_subset', suffix='eval_train'),
-#         InferEvalSplit(name='validation', suffix='validation_full',
-#                        include_in_mixture=False),
-#         InferEvalSplit(name='validation_subset', suffix='validation'),
-#         InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-#     ])
+MAESTROV3_CONFIG = DatasetConfig(
+    name='maestrov3',
+    paths={
+        'train':
+            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-?????-of-00025',
+        'train_subset':
+            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-00004-of-00025',
+        'validation':
+            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-?????-of-00025',
+        'validation_subset':
+            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-0002?-of-00025',
+        'test':
+            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_test.tfrecord-?????-of-00025'
+    },
+    features={
+        'audio': tf.io.FixedLenFeature([], dtype=tf.string),
+        'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
+        'id': tf.io.FixedLenFeature([], dtype=tf.string)
+    },
+    train_split='train',
+    train_eval_split='validation_subset',
+    infer_eval_splits=[
+        InferEvalSplit(name='train', suffix='eval_train_full',
+                       include_in_mixture=False),
+        InferEvalSplit(name='train_subset', suffix='eval_train'),
+        InferEvalSplit(name='validation', suffix='validation_full',
+                       include_in_mixture=False),
+        InferEvalSplit(name='validation_subset', suffix='validation'),
+        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
+    ])
 
 
 # GUITARSET_CONFIG = DatasetConfig(
@@ -272,54 +272,54 @@ class DatasetConfig:
 #     ])
 
 
-SLAKH_CONFIG = DatasetConfig(
-    name='slakh',
-    paths={
-        'train':
-            'gs://mt3/data/datasets/slakh/slakh_multi_full_subsets_10_train_all_inst.tfrecord-?????-of-02307',
-        'train_subset':
-            'gs://mt3/data/datasets/slakh/slakh_multi_full_subsets_10_train_all_inst.tfrecord-00000-of-02307',
-        'validation':
-            'gs://mt3/data/datasets/slakh/slakh_multi_full_validation_all_inst.tfrecord-?????-of-00168',
-        'validation_subset':
-            'gs://mt3/data/datasets/slakh/slakh_multi_full_validation_all_inst.tfrecord-0000?-of-00168',
-        'test':
-            'gs://mt3/data/datasets/slakh/slakh_multi_full_test_all_inst.tfrecord-?????-of-00109'
-    },
-    features={
-        'audio_sample_rate': tf.io.FixedLenFeature([], dtype=tf.int64),
-        'inst_names': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
-                                                    allow_missing=True),
-        'midi_class': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
-                                                    allow_missing=True),
-        'mix': tf.io.FixedLenSequenceFeature([], dtype=tf.float32,
-                                             allow_missing=True),
-        'note_sequences': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
-                                                        allow_missing=True),
-        'plugin_name': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
-                                                     allow_missing=True),
-        'program_num': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
-                                                     allow_missing=True),
-        'slakh_class': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
-                                                     allow_missing=True),
-        'src_ids': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
-                                                 allow_missing=True),
-        'stems': tf.io.FixedLenSequenceFeature([], dtype=tf.float32,
-                                               allow_missing=True),
-        'stems_shape': tf.io.FixedLenFeature([2], dtype=tf.int64),
-        'target_type': tf.io.FixedLenFeature([], dtype=tf.string),
-        'track_id': tf.io.FixedLenFeature([], dtype=tf.string),
-    },
-    train_split='train',
-    train_eval_split='validation_subset',
-    infer_eval_splits=[
-        InferEvalSplit(name='train', suffix='eval_train_full',
-                       include_in_mixture=False),
-        InferEvalSplit(name='train_subset', suffix='eval_train'),
-        InferEvalSplit(name='validation', suffix='validation_full',
-                       include_in_mixture=False),
-        InferEvalSplit(name='validation_subset', suffix='validation'),
-        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-    ])
+# SLAKH_CONFIG = DatasetConfig(
+#     name='slakh',
+#     paths={
+#         'train':
+#             'gs://mt3/data/datasets/slakh/slakh_multi_full_subsets_10_train_all_inst.tfrecord-?????-of-02307',
+#         'train_subset':
+#             'gs://mt3/data/datasets/slakh/slakh_multi_full_subsets_10_train_all_inst.tfrecord-00000-of-02307',
+#         'validation':
+#             'gs://mt3/data/datasets/slakh/slakh_multi_full_validation_all_inst.tfrecord-?????-of-00168',
+#         'validation_subset':
+#             'gs://mt3/data/datasets/slakh/slakh_multi_full_validation_all_inst.tfrecord-0000?-of-00168',
+#         'test':
+#             'gs://mt3/data/datasets/slakh/slakh_multi_full_test_all_inst.tfrecord-?????-of-00109'
+#     },
+#     features={
+#         'audio_sample_rate': tf.io.FixedLenFeature([], dtype=tf.int64),
+#         'inst_names': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
+#                                                     allow_missing=True),
+#         'midi_class': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
+#                                                     allow_missing=True),
+#         'mix': tf.io.FixedLenSequenceFeature([], dtype=tf.float32,
+#                                              allow_missing=True),
+#         'note_sequences': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
+#                                                         allow_missing=True),
+#         'plugin_name': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
+#                                                      allow_missing=True),
+#         'program_num': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
+#                                                      allow_missing=True),
+#         'slakh_class': tf.io.FixedLenSequenceFeature([], dtype=tf.int64,
+#                                                      allow_missing=True),
+#         'src_ids': tf.io.FixedLenSequenceFeature([], dtype=tf.string,
+#                                                  allow_missing=True),
+#         'stems': tf.io.FixedLenSequenceFeature([], dtype=tf.float32,
+#                                                allow_missing=True),
+#         'stems_shape': tf.io.FixedLenFeature([2], dtype=tf.int64),
+#         'target_type': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'track_id': tf.io.FixedLenFeature([], dtype=tf.string),
+#     },
+#     train_split='train',
+#     train_eval_split='validation_subset',
+#     infer_eval_splits=[
+#         InferEvalSplit(name='train', suffix='eval_train_full',
+#                        include_in_mixture=False),
+#         InferEvalSplit(name='train_subset', suffix='eval_train'),
+#         InferEvalSplit(name='validation', suffix='validation_full',
+#                        include_in_mixture=False),
+#         InferEvalSplit(name='validation_subset', suffix='validation'),
+#         InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
+#     ])
 
 
