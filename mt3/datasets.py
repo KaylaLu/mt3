@@ -84,58 +84,58 @@ class DatasetConfig:
 #     ])
 
 
-MAESTROV3_CONFIG = DatasetConfig(
-    name='maestrov3',
-    paths={
-        'train':
-            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-?????-of-00025',
-        'train_subset':
-            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-00004-of-00025',
-        'validation':
-            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-?????-of-00025',
-        'validation_subset':
-            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-0002?-of-00025',
-        'test':
-            'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_test.tfrecord-?????-of-00025'
-    },
-    features={
-        'audio': tf.io.FixedLenFeature([], dtype=tf.string),
-        'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
-        'id': tf.io.FixedLenFeature([], dtype=tf.string)
-    },
-    train_split='train',
-    train_eval_split='validation_subset',
-    infer_eval_splits=[
-        InferEvalSplit(name='train', suffix='eval_train_full',
-                       include_in_mixture=False),
-        InferEvalSplit(name='train_subset', suffix='eval_train'),
-        InferEvalSplit(name='validation', suffix='validation_full',
-                       include_in_mixture=False),
-        InferEvalSplit(name='validation_subset', suffix='validation'),
-        InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
-    ])
-
-
-# GUITARSET_CONFIG = DatasetConfig(
-#     name='guitarset',
+# MAESTROV3_CONFIG = DatasetConfig(
+#     name='maestrov3',
 #     paths={
 #         'train':
-#             'gs://mt3/data/datasets/guitarset/train.tfrecord-?????-of-00019',
+#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-?????-of-00025',
+#         'train_subset':
+#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_train.tfrecord-00004-of-00025',
 #         'validation':
-#             'gs://mt3/data/datasets/guitarset/validation.tfrecord-?????-of-00006',
+#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-?????-of-00025',
+#         'validation_subset':
+#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_validation.tfrecord-0002?-of-00025',
+#         'test':
+#             'gs://magentadata/datasets/maestro/v3.0.0/maestro-v3.0.0_ns_wav_test.tfrecord-?????-of-00025'
 #     },
 #     features={
-#         'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
 #         'audio': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'velocity_range': tf.io.FixedLenFeature([], dtype=tf.string),
-#         'id': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
+#         'id': tf.io.FixedLenFeature([], dtype=tf.string)
 #     },
 #     train_split='train',
-#     train_eval_split='validation',
+#     train_eval_split='validation_subset',
 #     infer_eval_splits=[
-#         InferEvalSplit(name='train', suffix='eval_train'),
-#         InferEvalSplit(name='validation', suffix='validation'),
+#         InferEvalSplit(name='train', suffix='eval_train_full',
+#                        include_in_mixture=False),
+#         InferEvalSplit(name='train_subset', suffix='eval_train'),
+#         InferEvalSplit(name='validation', suffix='validation_full',
+#                        include_in_mixture=False),
+#         InferEvalSplit(name='validation_subset', suffix='validation'),
+#         InferEvalSplit(name='test', suffix='test', include_in_mixture=False)
 #     ])
+
+
+GUITARSET_CONFIG = DatasetConfig(
+    name='guitarset',
+    paths={
+        'train':
+            'gs://mt3/data/datasets/guitarset/train.tfrecord-?????-of-00019',
+        'validation':
+            'gs://mt3/data/datasets/guitarset/validation.tfrecord-?????-of-00006',
+    },
+    features={
+        'sequence': tf.io.FixedLenFeature([], dtype=tf.string),
+        'audio': tf.io.FixedLenFeature([], dtype=tf.string),
+        'velocity_range': tf.io.FixedLenFeature([], dtype=tf.string),
+        'id': tf.io.FixedLenFeature([], dtype=tf.string),
+    },
+    train_split='train',
+    train_eval_split='validation',
+    infer_eval_splits=[
+        InferEvalSplit(name='train', suffix='eval_train'),
+        InferEvalSplit(name='validation', suffix='validation'),
+    ])
 
 
 # URMP_CONFIG = DatasetConfig(
